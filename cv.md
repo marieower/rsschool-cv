@@ -19,10 +19,37 @@ vk: @marie_ower
 
 # Примеры кода
 Пара интересных задач с Code Wars:
-**Заголовок.** Текст задания
+**Pair of gloves.** Winter is coming, you must prepare your ski holidays. The objective of this kata is to determine the number of pair of gloves you can constitute from the gloves you have in your drawer.
+Given an array describing the color of each glove, return the number of pairs you can constitute, assuming that only gloves of the same color can form pairs.
 Решение:
 ```js
+function numberOfPairs(gloves) {
+  let count = 0;
+  let glovesLeft = [...gloves].sort();
+  
+  while (glovesLeft.length > 1) {
+    if (glovesLeft[0] === glovesLeft[1]) {
+      count++
+      glovesLeft = glovesLeft.slice(2)
+    } else {
+      glovesLeft = glovesLeft.slice(1);
+    }
+  }
+  return count;
+}
+```
 
+
+**My Language Skills.** You are given a dictionary/hash/object containing some languages and your test results in the given languages. Return the list of languages where your test score is at least 60, in descending order of the results.
+Решение:
+```js
+function myLanguages(results) {
+  return Object.values(results).filter(val => val >= 60).sort((a, b)=>(b - a)).map(val => getKeyByValue(results, val));
+}
+
+const getKeyByValue = (obj, val) => {
+  return Object.keys(obj).find(key => obj[key] === val);
+}
 ```
 
 Больше примеров кода в моем репозитории: https://github.com/marieower
